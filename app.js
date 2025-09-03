@@ -571,3 +571,16 @@ function saveCompletedData() {
         console.error('Save completed failed:', e);
     }
 }
+
+// Tạo function helper nhanh
+function removeCompletedTask(title) {
+    let completed = JSON.parse(localStorage.getItem('completedCountdowns') || '[]');
+    completed = completed.filter(item => item.title !== title);
+    localStorage.setItem('completedCountdowns', JSON.stringify(completed));
+    completedCountdowns = completed;
+    refreshCompletedDisplay();
+}
+
+// Chạy trong Console:
+removeCompletedTask('test');
+saveToURL(); // Cập nhật URL để không chứa task 't'
