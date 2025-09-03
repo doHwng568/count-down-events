@@ -61,6 +61,12 @@
                 </div>
                 <button onclick="addNewCountdown()">➕ Thêm đếm ngược</button>
                 <button onclick="clearAllCountdowns()" style="background: #f44336;">🗑️ Xóa tất cả</button>
+                
+                <!-- Phần Share -->
+                <div class="share-section">
+                    <button class="share-btn" onclick="shareCountdowns()">🔗 Share Link</button>
+                    <span class="share-status" id="shareStatus">✅ Đã copy link!</span>
+                </div>
             </div>
 
             <div id="countdownList" class="countdown-list">
