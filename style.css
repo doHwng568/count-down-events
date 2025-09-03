@@ -1,0 +1,202 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 300px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #4CAF50;
+    text-align: center;
+}
+
+.completed-item {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.completed-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.completed-date {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+.completed-empty {
+    text-align: center;
+    opacity: 0.5;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.form-row {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+.countdown-list {
+    display: grid;
+    gap: 20px;
+}
+
+.countdown-card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.countdown-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.time-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    text-align: center;
+}
+
+.time-unit {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px 5px;
+    border-radius: 8px;
+}
+
+.time-number {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.time-label {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f44336;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.finished {
+    border: 3px solid #4CAF50;
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.finished-text {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.empty {
+    text-align: center;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-height: 200px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .main-content {
+        padding: 10px;
+    }
+}
