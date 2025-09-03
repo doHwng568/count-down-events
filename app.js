@@ -582,5 +582,5 @@ function removeCompletedTask(title) {
 }
 
 // Chạy trong Console:
-removeCompletedTask('test');
+removeCompletedTask('aa');
 saveToURL(); // Cập nhật URL để không chứa task 't'
