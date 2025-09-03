@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Multi Countdown</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Sidebar hiển thị countdown đã hoàn thành -->
     <div class="sidebar">
@@ -30,7 +32,32 @@
                 </div>
                 <div class="form-row">
                     <label>Ngày giờ mục tiêu:</label>
-                    <input type="datetime-local" id="eventDateTime">
+                    <div class="datetime-picker">
+                        <input type="text" class="datetime-input" id="eventDateTime" placeholder="Chọn ngày và giờ..."
+                            readonly>
+                        <div class="datetime-popup" id="datetimePopup">
+                            <div class="datetime-header">
+                                <button class="nav-btn" id="prevMonth">‹</button>
+                                <div class="month-year" id="monthYear"></div>
+                                <button class="nav-btn" id="nextMonth">›</button>
+                            </div>
+
+                            <div class="calendar-grid" id="calendarGrid"></div>
+
+                            <div class="time-section">
+                                <input type="number" class="time-input" id="hourInput" min="0" max="23"
+                                    placeholder="00">
+                                <span class="time-separator">:</span>
+                                <input type="number" class="time-input" id="minuteInput" min="0" max="59"
+                                    placeholder="00">
+                            </div>
+
+                            <div class="datetime-actions">
+                                <button class="btn-cancel" id="cancelBtn">Hủy</button>
+                                <button class="btn-confirm" id="confirmBtn">Xác nhận</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <button onclick="addNewCountdown()">➕ Thêm đếm ngược</button>
                 <button onclick="clearAllCountdowns()" style="background: #f44336;">🗑️ Xóa tất cả</button>
@@ -44,4 +71,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>
