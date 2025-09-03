@@ -4,24 +4,114 @@ console.log('Script started');
 let countdownData = [
     {
         id: 1,
-        title: "🎉 Tết Nguyên Đán 2026",
-        targetDate: new Date("2026-02-17T00:00:00").getTime()
-    },
-    {
-        id: 2,
         title: "🌕 Trung Thu 2025",
         targetDate: new Date("2025-10-06T00:00:00").getTime()
-    },
+    }
+    ,
     {
-        id: 3,
+        id: 2,
         title: "🎄 Giáng Sinh 2025",
         targetDate: new Date("2025-12-25T00:00:00").getTime()
+    }
+    ,
+    {
+        id: 3,
+        title: "🎉 Tết Nguyên Đán 2026",
+        targetDate: new Date("2026-02-17T00:00:00").getTime()
     }
 ];
 
 let completedCountdowns = [];
 let updateIntervals = {};
 
+// ===== URL SHARING FUNCTIONS =====
+function saveToURL() {
+    try {
+        // Chỉ lưu user countdowns (id > 3) và completed
+        const userCountdowns = countdownData.filter(item => item.id > 3);
+        const dataToSave = {
+            countdowns: userCountdowns,
+            completed: completedCountdowns
+        };
+
+        // Encode data thành base64
+        const encoded = btoa(JSON.stringify(dataToSave));
+
+        // Cập nhật URL hash
+        window.location.hash = `data=${encoded}`;
+
+        console.log('Data saved to URL');
+    } catch (e) {
+        console.error('Save to URL failed:', e);
+    }
+}
+
+function loadFromURL() {
+    try {
+        const hash = window.location.hash;
+        if (hash.startsWith('#data=')) {
+            const encoded = hash.substring(6); // Remove '#data='
+            const decoded = atob(encoded);
+            const data = JSON.parse(decoded);
+
+            if (data.countdowns && Array.isArray(data.countdowns)) {
+                // Merge với hardcoded data
+                countdownData = [
+                    ...countdownData.filter(item => item.id <= 3), // Keep hardcoded
+                    ...data.countdowns // Add user countdowns
+                ];
+            }
+
+            if (data.completed && Array.isArray(data.completed)) {
+                completedCountdowns = data.completed;
+            }
+
+            console.log('Data loaded from URL:', data);
+            return true;
+        }
+    } catch (e) {
+        console.error('Load from URL failed:', e);
+    }
+    return false;
+}
+
+async function shareCountdowns() {
+    try {
+        // Update URL first
+        saveToURL();
+
+        // Copy URL to clipboard
+        const url = window.location.href;
+        await navigator.clipboard.writeText(url);
+
+        // Show success message
+        const statusEl = document.getElementById('shareStatus');
+        statusEl.classList.add('show');
+
+        setTimeout(() => {
+            statusEl.classList.remove('show');
+        }, 2000);
+
+        console.log('Link copied:', url);
+    } catch (e) {
+        // Fallback for older browsers
+        const url = window.location.href;
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        const statusEl = document.getElementById('shareStatus');
+        statusEl.classList.add('show');
+        setTimeout(() => statusEl.classList.remove('show'), 2000);
+
+        console.log('Link copied (fallback):', url);
+    }
+}
+
+// ===== EXISTING CODE =====
 
 // Custom DateTime Picker Class
 class CustomDateTimePicker {
@@ -175,25 +265,21 @@ class CustomDateTimePicker {
     }
 }
 
-// Khi load trang
-window.onload = function () {
-    console.log('Page loaded');
-    loadSavedData();
-    refreshDisplay();
-    refreshCompletedDisplay();
-};
-
-
 // Initialize custom datetime picker
 let dateTimePicker;
 window.onload = function () {
     console.log('Page loaded');
     dateTimePicker = new CustomDateTimePicker('eventDateTime');
-    loadSavedData();
+
+    // Load from URL first, then localStorage as fallback
+    const loadedFromURL = loadFromURL();
+    if (!loadedFromURL) {
+        loadSavedData();
+    }
+
     refreshDisplay();
     refreshCompletedDisplay();
 };
-
 
 function addNewCountdown() {
     console.log('Add button clicked');
@@ -201,7 +287,7 @@ function addNewCountdown() {
     const title = document.getElementById('eventTitle').value.trim();
     const targetDate = dateTimePicker.getValue();
 
-    console.log('Title:', title, 'DateTime:', targetDate); // Debug
+    console.log('Title:', title, 'DateTime:', targetDate);
 
     if (!title) {
         alert('Vui lòng nhập tiêu đề sự kiện!');
@@ -228,11 +314,11 @@ function addNewCountdown() {
 
     countdownData.push(newCountdown);
     saveData();
+    saveToURL(); // 🔥 Save to URL
     refreshDisplay();
 
     // Clear form
     document.getElementById('eventTitle').value = '';
-    // ⚠️ THAY ĐỔI Ở ĐÂY:
     dateTimePicker.input.value = '';
     delete dateTimePicker.input.dataset.datetime;
     dateTimePicker.selectedDate = null;
@@ -260,6 +346,7 @@ function clearAllCountdowns() {
 
         countdownData = countdownData.filter(item => item.id <= 3);
         saveData();
+        saveToURL(); // 🔥 Save to URL
         refreshDisplay();
 
         console.log('User countdowns cleared');
@@ -282,6 +369,7 @@ function deleteCountdown(id) {
 
         countdownData = countdownData.filter(item => item.id !== id);
         saveData();
+        saveToURL(); // 🔥 Save to URL
         refreshDisplay();
     }
 }
@@ -382,6 +470,7 @@ function updateCountdownDisplay(id) {
         addToCompleted(countdown);
         countdownData = countdownData.filter(item => item.id !== id);
         saveData();
+        saveToURL(); // 🔥 Save to URL
 
         clearInterval(updateIntervals[id]);
         delete updateIntervals[id];
@@ -411,6 +500,7 @@ function addToCompleted(countdown) {
 
         completedCountdowns.push(completedItem);
         saveCompletedData();
+        saveToURL(); // 🔥 Save to URL
         refreshCompletedDisplay();
 
         console.log('Added to completed:', completedItem);
