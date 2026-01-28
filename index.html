@@ -1,81 +1,13 @@
-<!DOCTYPE html>
-<html lang="vi">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Multi Countdown</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <!-- Sidebar hiển thị countdown đã hoàn thành -->
-    <div class="sidebar">
-        <h3>🏆 Đã Hoàn Thành</h3>
-        <div id="completedList">
-            <div class="completed-empty">Chưa có countdown nào hoàn thành</div>
-        </div>
-    </div>
-
-    <!-- Nội dung chính -->
-    <div class="main-content">
-        <div class="container">
-            <div class="header">
-                <h1>⏰ Đếm ngược đa nhiệm</h1>
-                <p>Thêm các mốc thời gian và theo dõi chúng</p>
-            </div>
-
-            <div class="form-box">
-                <div class="form-row">
-                    <label>Tiêu đề sự kiện:</label>
-                    <input type="text" id="eventTitle" placeholder="Ví dụ: Tết Nguyên Đán 2026">
-                </div>
-                <div class="form-row">
-                    <label>Ngày giờ mục tiêu:</label>
-                    <div class="datetime-picker">
-                        <input type="text" class="datetime-input" id="eventDateTime" placeholder="Chọn ngày và giờ..."
-                            readonly>
-                        <div class="datetime-popup" id="datetimePopup">
-                            <div class="datetime-header">
-                                <button class="nav-btn" id="prevMonth">‹</button>
-                                <div class="month-year" id="monthYear"></div>
-                                <button class="nav-btn" id="nextMonth">›</button>
-                            </div>
-
-                            <div class="calendar-grid" id="calendarGrid"></div>
-
-                            <div class="time-section">
-                                <input type="number" class="time-input" id="hourInput" min="0" max="23"
-                                    placeholder="00">
-                                <span class="time-separator">:</span>
-                                <input type="number" class="time-input" id="minuteInput" min="0" max="59"
-                                    placeholder="00">
-                            </div>
-
-                            <div class="datetime-actions">
-                                <button class="btn-cancel" id="cancelBtn">Hủy</button>
-                                <button class="btn-confirm" id="confirmBtn">Xác nhận</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button onclick="addNewCountdown()">➕ Thêm đếm ngược</button>
-                <button onclick="clearAllCountdowns()" style="background: #f44336;">🗑️ Xóa tất cả</button>
-                
-                <!-- Phần Share -->
-                <div class="share-section">
-                    <button class="share-btn" onclick="shareCountdowns()">🔗 Share Link</button>
-                    <span class="share-status" id="shareStatus">✅ Đã copy link!</span>
-                </div>
-            </div>
-
-            <div id="countdownList" class="countdown-list">
-                <div class="empty">Chưa có đếm ngược nào. Hãy thêm mốc đầu tiên!</div>
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-</body>
-
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>countdown-events</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
