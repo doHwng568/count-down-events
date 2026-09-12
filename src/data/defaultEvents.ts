@@ -83,15 +83,95 @@ export const HARDCODED_EVENTS: CountdownEvent[] = [
         isHardcoded: true,
     },
     {
+        id: 'hc-fifa-world-cup-2026-final',
+        title: "⚽ Chung kết FIFA World Cup 2026",
+        targetDate: new Date("2026-07-19T15:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
         id: 'hc-solar-eclipse-2026',
         title: "🌑 Nhật thực toàn phần 2026",
         targetDate: new Date("2026-08-12T18:00:00").getTime(),
         isHardcoded: true,
     },
     {
+        id: 'hc-mid-autumn-2026',
+        title: "🌕 Tết Trung Thu 2026",
+        targetDate: new Date("2026-09-25T00:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-xmas-2026',
+        title: "🎄 Lễ Giáng Sinh 2026",
+        targetDate: new Date("2026-12-25T00:00:00").getTime(),
+        isHardcoded: true,
+    },
+
+    // 2027 Events
+    {
+        id: 'hc-new-year-2027',
+        title: "✨ Chúc Mừng Năm Mới 2027",
+        targetDate: new Date("2027-01-01T00:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-australian-open-2027',
+        title: "🎾 Chung kết Australian Open 2027",
+        targetDate: new Date("2027-01-31T15:30:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-tet-2027',
+        title: "🎊 Tết Nguyên Đán Đinh Mùi 2027",
+        targetDate: new Date("2027-02-06T00:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-super-bowl-2027',
+        title: "🏈 Super Bowl LXI",
+        targetDate: new Date("2027-02-14T18:30:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-uefa-ucl-final-2027',
+        title: "🏆 Chung kết UEFA Champions League 2027",
+        targetDate: new Date("2027-06-05T21:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-fifa-womens-world-cup-2027',
+        title: "⚽ Khai mạc FIFA Women's World Cup 2027",
+        targetDate: new Date("2027-06-24T12:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-mid-autumn-2027',
+        title: "🌕 Tết Trung Thu 2027",
+        targetDate: new Date("2027-09-15T00:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-rugby-world-cup-2027',
+        title: "🏉 Khai mạc Rugby World Cup 2027",
+        targetDate: new Date("2027-10-01T10:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-special-olympics-2027',
+        title: "🌍 Special Olympics World Summer Games 2027",
+        targetDate: new Date("2027-10-16T10:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
+        id: 'hc-xmas-2027',
+        title: "🎄 Lễ Giáng Sinh 2027",
+        targetDate: new Date("2027-12-25T00:00:00").getTime(),
+        isHardcoded: true,
+    },
+    {
         id: 'hc-artemis-3',
-        title: "🚀 NASA Artemis III - Đưa người trở lại Mặt Trăng",
-        targetDate: new Date("2026-12-31T23:59:59").getTime(), // Placeholder for end of 2026
+        title: "🚀 NASA Artemis III - Kiểm tra hệ thống trước hạ cánh Mặt Trăng",
+        targetDate: new Date("2027-12-31T23:59:59").getTime(),
         isHardcoded: true,
     }
 ];
